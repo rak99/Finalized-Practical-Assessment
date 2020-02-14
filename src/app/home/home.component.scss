@@ -13,7 +13,7 @@
 .home-mat-button {
   height: 64px;
   width: fit-content;
-  font-size: 24px;
+  font-size: 2vh;
   color: white;
   background: #b5bdc8; /* Old browsers */
   background-image: -moz-linear-gradient( #23283B 0%, rgb(66, 68, 75) 25%, rgb(16, 22, 44) 100%) !important; /* FF3.6-15 */
@@ -32,7 +32,7 @@
   height: 128px;
   margin-left: 20px;
   width: fit-content;
-  font-size: 48px;
+  font-size: 3vh;
   color: white;
   background: #b5bdc8; /* Old browsers */
   background-image: -moz-linear-gradient( #23283B 0%, rgb(66, 68, 75) 25%, rgb(16, 22, 44) 100%) !important; /* FF3.6-15 */
@@ -79,7 +79,7 @@
   display: flex;
   width: 50%;
   color: white;
-  font-size: 24px;
+  font-size: 2vh;
 }
 
 .location-error-card {
@@ -90,10 +90,19 @@
 }
 
 mat-card {
-  min-width: 400px;
+  align-items: center;
+  display: flex;
+  @media (min-height: 401px) {
+    flex-direction: column;
+  }
+  @media (max-height: 400px) {
+    flex-direction: row;
+  }
+  max-width: 80% !important;
+  max-height: 75%;
+  min-width: 25%;
   width: max-content;
   height: max-content;
-  font-size: 24px;
   background-image: -moz-linear-gradient( #23283B 5%, rgb(66, 68, 75) 35%, rgb(16, 22, 44) 100%) !important; /* FF3.6-15 */
   background-image: -webkit-linear-gradient( #23283B 5%, rgb(66, 68, 75) 35%, rgb(16, 22, 44) 100%) !important; /* Chrome10-25,Safari5.1-6 */
   background-image: linear-gradient(145deg, rgb(22, 25, 37) 5%, rgb(35, 37, 41) 95%, rgb(15, 22, 46) 100%) !important; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
@@ -121,11 +130,11 @@ h3 {
 .weather-details {
   text-align: center;
   text-transform: capitalize;
-  font-size: 28px;
+  font-size: 2vh;
 }
 
 .weather-header {
-  font-size: 64px;
+  font-size: 3vh;
 }
 
 .icon-container {
@@ -135,8 +144,8 @@ h3 {
 
 .weather-description {
   text-transform: capitalize;
-  margin-bottom: 50px;
-  font-size: 38px;
+  margin-bottom: 20px;
+  font-size: 2vh;
 }
 
 .weather-temp {
@@ -145,7 +154,7 @@ h3 {
 }
 
 .alert-allow {
-  font-size: 32px;
+  font-size: 2vh;
   color: white;
   display: flex;
   flex-direction: column;

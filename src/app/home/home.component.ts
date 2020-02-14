@@ -40,6 +40,7 @@ export class HomeComponent implements OnInit {
   photoCollection = [];
   date = Date();
   locationAccess;
+  amountOfImages: number;
 
   constructor(private weatherService: WeatherService, private photoService: PhotoService) {
     navigator.permissions.query({name:'geolocation'}).then((result) => {
@@ -55,11 +56,21 @@ export class HomeComponent implements OnInit {
       // Don't do anything if the permission was denied.
     });
 
-    this.photoService.getRandomPhoto('nature', 'squarish', 3).subscribe((data) => {
+    if (outerWidth < 1200) {
+      this.amountOfImages = 1;
+    } else {
+      this.amountOfImages = 3;
+    }
+
+    this.photoService.getRandomPhoto('nature', 'portrait', this.amountOfImages).subscribe((data) => {
       const photoData = data;
       console.log('Photo_Data', photoData)
-      for (let elt of photoData) {
-        this.photoCollection.push(elt.urls.raw+`&w=${outerWidth/2}`);
+      if (this.amountOfImages === 1) {
+        this.photoUrl = photoData[0].urls.raw+`&w=${outerWidth}`;
+      } else {
+        for (let elt of photoData) {
+          this.photoCollection.push(elt.urls.raw+`&w=${outerWidth / this.amountOfImages}`);
+        }
       }
       console.log(this.photoCollection);
     }, err => {
