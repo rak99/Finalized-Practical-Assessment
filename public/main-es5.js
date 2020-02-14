@@ -1204,7 +1204,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           console.log(_this.photoCollection);
         }, function (err) {
           console.log(err);
-          _this.photoUrl = '../../assets/luca-bravo-zAjdgNXsMeg-unsplash.jpg';
+
+          if (err) {
+            _this.photoUrl = '../../assets/luca-bravo-zAjdgNXsMeg-unsplash.jpg';
+          }
         });
       }
 
@@ -1241,10 +1244,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               _this2.photoService.getRandomPhoto(temp ? 'warm ' + weatherDescription : 'cold ' + weatherDescription, 'landscape', 1).subscribe(function (data) {
                 var photoData = data;
                 console.log('Photo_Data', photoData);
-                _this2.photoUrl = photoData.urls.regular;
+                _this2.photoUrl = photoData[0].urls.regular;
               }, function (err) {
                 console.log(err);
-                _this2.photoUrl = '../../assets/luca-bravo-zAjdgNXsMeg-unsplash.jpg';
+
+                if (err) {
+                  _this2.photoUrl = '../../assets/luca-bravo-zAjdgNXsMeg-unsplash.jpg';
+                }
               }); // Configure data 
 
             });
@@ -1280,9 +1286,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           } else if (this.photoCollection.length === 3) {
             styles = {
               'background-image': "url(".concat(this.photoCollection[0], "),  url(").concat(this.photoCollection[1], "), url(").concat(this.photoCollection[2], ")"),
-              'background-repeat': "no-repeat, no-repeat, no-repeat",
-              'background-size': "33% 100%, 33% 100%, 33% 100%,",
-              'background-position': "left, center, right"
+              'background-size': '33% 100%, 33% 100%, 33% 100%',
+              'background-repeat': 'no-repeat, no-repeat, no-repeat',
+              'background-position': 'left, center, right'
             };
           }
 

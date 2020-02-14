@@ -55,11 +55,11 @@ export class HomeComponent implements OnInit {
       // Don't do anything if the permission was denied.
     });
 
-    this.photoService.getRandomPhoto('nature', 'portrait', 3).subscribe((data) => {
+    this.photoService.getRandomPhoto('nature', 'squarish', 3).subscribe((data) => {
       const photoData = data;
       console.log('Photo_Data', photoData)
       for (let elt of photoData) {
-        this.photoCollection.push(elt.urls.small);
+        this.photoCollection.push(elt.urls.raw+`&w=${outerWidth/2}`);
       }
       console.log(this.photoCollection);
     }, err => {
@@ -106,7 +106,7 @@ export class HomeComponent implements OnInit {
         this.photoService.getRandomPhoto(temp ? 'warm ' + weatherDescription : 'cold ' + weatherDescription, 'landscape', 1).subscribe((data) => {
           const photoData = data;
           console.log('Photo_Data', photoData)
-          this.photoUrl = photoData[0].urls.regular;
+          this.photoUrl = photoData[0].urls.raw+`&w=${outerWidth}`;
         }, err => {
           console.log(err);
           if (err) {
@@ -149,7 +149,7 @@ export class HomeComponent implements OnInit {
       'background-image': `url(${this.photoCollection[0]}),  url(${this.photoCollection[1]}), url(${this.photoCollection[2]})`,
       'background-size': '33% 100%, 33% 100%, 33% 100%',
       'background-repeat': 'no-repeat, no-repeat, no-repeat',
-      'background-position': 'left, center, right'
+      'background-position': 'left, center, right' 
       };
     }
     return styles;

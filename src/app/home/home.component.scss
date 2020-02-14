@@ -4,7 +4,7 @@
   // Header height is added because height is being inherited from parent when using 100%, the parent body has all the contents inside of it, we do not want the container div to equal the height of the body but the body - header, which is statically
   // set to 64px
   height: calc(100% - 64px);
-  background-color: darkgrey;
+  background-color: linear-gradient(145deg, rgb(22, 25, 37) 0%, rgb(35, 37, 41) 85%, rgb(15, 22, 46) 100%);
   align-items: center;
   justify-content: center;
   margin: 0;
