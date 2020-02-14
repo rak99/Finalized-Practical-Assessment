@@ -45,7 +45,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<mat-toolbar>\n  <mat-toolbar-row>\n    <a class=\"home-nav\" style=\"text-decoration: none; color: inherit;\" [href]=\"sanitizedUrl + '/home'\"><span>Pratical Assessment</span></a>\n</mat-toolbar-row>\n</mat-toolbar>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<mat-toolbar>\n  <mat-toolbar-row>\n    <a class=\"home-nav\" style=\"text-decoration: none; color: inherit;\" [href]=\"sanitizedUrl\"><span>Pratical Assessment</span></a>\n</mat-toolbar-row>\n</mat-toolbar>\n");
 
 /***/ }),
 
@@ -309,7 +309,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const routes = [{ path: '', component: _home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"] }];
+const routes = [{ path: 'home', component: _home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"] }];
 let AppRoutingModule = class AppRoutingModule {
 };
 AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -443,7 +443,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! exports provided: apiKey, baseUrl, accessKey, secretKey, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"apiKey\":\"8efae9d98e5cb9e674cd59fb3fec08b3\",\"baseUrl\":\"localhost:4200\",\"accessKey\":\"c4c3064e29a1a377378d2e888abc3ebfbef3e00c87cf27015f2e121d7adfb052\",\"secretKey\":\"e8e1c64cf6ec145afd3379e75ad656b71fe46cb359ae39bab55cf14989466daf\"}");
+module.exports = JSON.parse("{\"apiKey\":\"8efae9d98e5cb9e674cd59fb3fec08b3\",\"baseUrl\":\"https://weather-api-angular-12c42.firebaseapp.com/\",\"accessKey\":\"c4c3064e29a1a377378d2e888abc3ebfbef3e00c87cf27015f2e121d7adfb052\",\"secretKey\":\"e8e1c64cf6ec145afd3379e75ad656b71fe46cb359ae39bab55cf14989466daf\"}");
 
 /***/ }),
 
