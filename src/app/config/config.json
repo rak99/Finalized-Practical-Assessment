@@ -1,4 +1,6 @@
 {
   "apiKey": "8efae9d98e5cb9e674cd59fb3fec08b3",
-  "baseUrl": "localhost:4201"
+  "baseUrl": "localhost:4200",
+  "accessKey": "c4c3064e29a1a377378d2e888abc3ebfbef3e00c87cf27015f2e121d7adfb052",
+  "secretKey": "e8e1c64cf6ec145afd3379e75ad656b71fe46cb359ae39bab55cf14989466daf"
 }

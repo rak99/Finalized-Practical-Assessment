@@ -1,5 +1,43 @@
-<div class="container">
-  <button mat-raised-button class="home-mat-form-input" class="home-mat-button" (click)="fetchWeatherData()">
+<div [ngStyle]="setBackground()" class="container">
+
+  <button *ngIf="!startLoader && !touched" mat-raised-button class="home-mat-form-input home-mat-button" (click)="fetchWeatherData()">
     Find My Weather Details
   </button>
+
+  <mat-card class="location-error-card" [@slideInLeft]="locationAccess === 'denied' && touched" *ngIf="locationAccess === 'denied' && touched">
+    <div class="location-error" *ngIf="locationAccess === 'denied'">
+      <h2>
+        It seems there was an error accessing your location, please click on the icon just left of the url in the search bar, after that you should see a 'location' permission, click it and change it to 'Allow'
+      </h2>
+    </div>
+  </mat-card>
+
+  <div class="alert-allow" *ngIf="startLoader && touched && locationAccess !== 'denied'">
+    <div *ngIf="startLoader && locationAccess !== 'denied'" class="lds-ring"><div></div><div></div><div></div><div></div></div>
+    <h3 *ngIf="locationAccess === 'prompt'">
+      Please choose allow on the permission popup
+    </h3>
+  </div>  
+
+  <mat-card [@slideInLeft]="!startLoader && touched && locationAccess === 'granted'" *ngIf="!startLoader && touched">
+    <h3 class="weather-header">{{weatherInfo.name}}</h3>
+    <span class="icon-container">
+      <img class="weather-icon" src={{imgUrl}}>
+    <h3 class="weather-temp">{{ weatherInfo.main.temp.toString().length > 1 ? weatherInfo.main.temp.toString()[0] + weatherInfo.main.temp.toString()[1]+'°C' : weatherInfo.main.temp.toString()[0]+'°C'}} </h3>
+    </span>
+    <h3 class="weather-description">{{weatherInfo.weather[0].description}}</h3>
+    <div class="weather-details">
+      <h3>Feels Like</h3>
+      <h3>{{weatherInfo.main.feels_like}}°C</h3>
+    </div>
+    <div class="weather-details">
+      <h3>Wind</h3>
+      <h3>{{weatherInfo.wind.speed}} KM/H</h3>
+    </div>
+    <div class="weather-details">
+      <h3>Humidity</h3>
+      <h3>{{weatherInfo.main.humidity}}%</h3>
+    </div>
+  </mat-card>
+  
 </div>

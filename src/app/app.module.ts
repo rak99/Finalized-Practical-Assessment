@@ -11,10 +11,13 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { HttpClientModule } from '@angular/common/http';
 
 import {
-  MatInputModule, MatIconModule, MatButtonModule
+  MatInputModule, MatIconModule, MatButtonModule, MatCardModule, MatCard
 } from '@angular/material'
+
 import { WeatherService } from './services/weather.service';
 import { WeatherApi } from './weather.api.class';
+import { PhotoService } from './services/photo.service';
+import { UnsplashApi } from './unsplash.api.class';
 
 @NgModule({
   declarations: [
@@ -30,9 +33,10 @@ import { WeatherApi } from './weather.api.class';
     HttpClientModule,
     MatInputModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule
   ],
-  providers: [WeatherService, WeatherApi],
+  providers: [WeatherService, WeatherApi, PhotoService, UnsplashApi],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
