@@ -64,7 +64,9 @@ export class HomeComponent implements OnInit {
       console.log(this.photoCollection);
     }, err => {
       console.log(err);
-      this.photoUrl = '../../assets/luca-bravo-zAjdgNXsMeg-unsplash.jpg';
+      if (err) {
+        this.photoUrl = '../../assets/luca-bravo-zAjdgNXsMeg-unsplash.jpg';
+      }
     });
 
   }
@@ -104,10 +106,12 @@ export class HomeComponent implements OnInit {
         this.photoService.getRandomPhoto(temp ? 'warm ' + weatherDescription : 'cold ' + weatherDescription, 'landscape', 1).subscribe((data) => {
           const photoData = data;
           console.log('Photo_Data', photoData)
-          this.photoUrl = photoData.urls.regular;
+          this.photoUrl = photoData[0].urls.regular;
         }, err => {
           console.log(err);
-          this.photoUrl = '../../assets/luca-bravo-zAjdgNXsMeg-unsplash.jpg';
+          if (err) {
+            this.photoUrl = '../../assets/luca-bravo-zAjdgNXsMeg-unsplash.jpg';
+          }
         });
 
         // Configure data 
@@ -143,9 +147,9 @@ export class HomeComponent implements OnInit {
     } else if (this.photoCollection.length === 3) {
       styles = {
       'background-image': `url(${this.photoCollection[0]}),  url(${this.photoCollection[1]}), url(${this.photoCollection[2]})`,
-      'background-repeat': `no-repeat, no-repeat, no-repeat`,
-      'background-size': `33% 100%, 33% 100%, 33% 100%,`,
-      'background-position': `left, center, right`
+      'background-size': '33% 100%, 33% 100%, 33% 100%',
+      'background-repeat': 'no-repeat, no-repeat, no-repeat',
+      'background-position': 'left, center, right'
       };
     }
     return styles;
