@@ -1,0 +1,16 @@
+.mat-toolbar {
+  color: white;
+  font-size: 24px;
+  background: #b5bdc8; /* Old browsers */
+  background-image: -moz-linear-gradient( #23283B 0%, rgb(66, 68, 75) 25%, rgb(16, 22, 44) 100%) !important; /* FF3.6-15 */
+  background-image: -webkit-linear-gradient( #23283B 0%, rgb(66, 68, 75) 25%, rgb(16, 22, 44) 100%) !important; /* Chrome10-25,Safari5.1-6 */
+  background-image: linear-gradient(145deg, rgb(22, 25, 37) 0%, rgb(35, 37, 41) 85%, rgb(15, 22, 46) 100%) !important; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  box-shadow: -0px 3px 20px 2px #8d652e;
+}
+
+.home-nav:hover {
+  transition: 0.2s text-shadow;
+  text-shadow: 0 0 2px #fff, 0 0 3px #ff4da6, 0 0 5px #ff4da6, 0 0 5px #ff4da6, 0 0 5px #ff4da6, 0 0 5px #ff4da6, 0 0 5px #ff4da6;}
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: white !important;
+}
