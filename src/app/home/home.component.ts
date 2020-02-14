@@ -36,7 +36,8 @@ export class HomeComponent implements OnInit {
   showSlowConnectionMsg = false;
   weatherInfo: WeatherInfo;
   imgUrl;
-  photoUrl = '../../assets/daniel-mirlea-VGDlTZk2No8-unsplash.jpg';
+  photoUrl= '';
+  photoCollection = [];
   date = Date();
   locationAccess;
 
@@ -53,10 +54,23 @@ export class HomeComponent implements OnInit {
       }
       // Don't do anything if the permission was denied.
     });
+
+    this.photoService.getRandomPhoto('nature', 'portrait', 3).subscribe((data) => {
+      const photoData = data;
+      console.log('Photo_Data', photoData)
+      for (let elt of photoData) {
+        this.photoCollection.push(elt.urls.small);
+      }
+      console.log(this.photoCollection);
+    }, err => {
+      console.log(err);
+      this.photoUrl = '../../assets/luca-bravo-zAjdgNXsMeg-unsplash.jpg';
+    });
+
   }
 
   ngOnInit() {
-
+    console.log('loaded');
   }
 
   refresh() {
@@ -87,12 +101,13 @@ export class HomeComponent implements OnInit {
         let weatherDescription = weatherInfo.weather[0].main;
         let temp = weatherInfo.main.feels_like > 10;
 
-        this.photoService.getRandomPhoto(temp ? 'warm ' + weatherDescription : 'cold ' + weatherDescription, 'landscape').subscribe((data) => {
+        this.photoService.getRandomPhoto(temp ? 'warm ' + weatherDescription : 'cold ' + weatherDescription, 'landscape', 1).subscribe((data) => {
           const photoData = data;
           console.log('Photo_Data', photoData)
-          this.photoUrl = photoData.urls.full;
+          this.photoUrl = photoData.urls.regular;
         }, err => {
           console.log(err);
+          this.photoUrl = '../../assets/luca-bravo-zAjdgNXsMeg-unsplash.jpg';
         });
 
         // Configure data 
@@ -119,11 +134,20 @@ export class HomeComponent implements OnInit {
   }
 
   setBackground() {
-    let styles = {
-      // Undo until I find out how to make it work
-    // 'background': this.photoUrl && this.photoUrl.length > 0 ? `url(${this.photoUrl}) center/cover no-repeat fixed` : 'url("../../assets/daniel-mirlea-VGDlTZk2No8-unsplash.jpg") center/cover no-repeat fixed'
-    'background': `url(${this.photoUrl}) center/cover no-repeat fixed`
-    };
+    let styles = {};
+    console.log(this.photoUrl);
+    if (this.photoUrl.length > 0) {
+      styles = {
+      'background': `url(${this.photoUrl}) center/cover no-repeat fixed`
+      };
+    } else if (this.photoCollection.length === 3) {
+      styles = {
+      'background-image': `url(${this.photoCollection[0]}),  url(${this.photoCollection[1]}), url(${this.photoCollection[2]})`,
+      'background-repeat': `no-repeat, no-repeat, no-repeat`,
+      'background-size': `33% 100%, 33% 100%, 33% 100%,`,
+      'background-position': `left, center, right`
+      };
+    }
     return styles;
   }
 

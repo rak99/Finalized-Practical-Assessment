@@ -22,8 +22,8 @@ export class PhotoService {
   constructor(private unsplashApi: UnsplashApi) {}
   
 
-  getRandomPhoto(query: string, orientation: string): Observable<any> {
-    return this.unsplashApi.get(`/random?query=${query}&orientation=${orientation}`);
+  getRandomPhoto(query: string, orientation: string, count: number): Observable<any> {
+    return this.unsplashApi.get(`/random?query=${query}&orientation=${orientation}&count=${count}`);
   }
 
 getSpecificPhoto(id: string): Observable<any> {
