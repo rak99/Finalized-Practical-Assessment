@@ -98,9 +98,17 @@ mat-card {
   @media (max-height: 400px) {
     flex-direction: row;
   }
+  @media (min-width:320px)  { /* smartphones, iPhone, portrait 480x320 phones */ min-width: 50%; }
+  @media (min-width:480px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }
+  @media (min-width:640px)  { /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }
+  @media (min-width:960px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */ }
+  @media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */ min-width: 40%; }
+  @media (min-width:1280px) { /* hi-res laptops and desktops */  min-width: 30%; }
+  @media (min-width:1920px) { /* hi-res laptops and desktops */  min-width: 15% }
+  @media (min-width:2250px) { /* hi-res laptops and desktops */  min-width: 13%; }
+  @media (min-width:2560px) { /* hi-res laptops and desktops */  min-width: 12%; }
   max-width: 80% !important;
   max-height: 75%;
-  min-width: 25%;
   width: max-content;
   height: max-content;
   background-image: -moz-linear-gradient( #23283B 5%, rgb(66, 68, 75) 35%, rgb(16, 22, 44) 100%) !important; /* FF3.6-15 */
